@@ -1,0 +1,57 @@
+ul {
+    display: grid;
+    list-style-type: none;
+    grid-template-columns: repeat(5, 20%);
+    margin-bottom: 0;
+    margin-left: -40px;
+    margin-top: -30px;
+}
+
+.nav {
+    /*position: sticky;*/
+    z-index: 15;
+    margin-top: -20px;
+}
+
+.nav-item {
+    border: gray solid thin;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    background-color: lightblue;
+    height: 30px;
+    z-index: 100;
+}
+
+li a {
+    display: block;
+    height: 100%;
+}
+
+li a:hover {
+    background-color: cyan;
+}
+
+li a:active {
+    background-color: aqua;
+}
+
+li:first-child .nav-item a {
+    color: darkred;
+}
+
+li:nth-child(2) .nav-item a {
+    color: #9315ed
+}
+
+li:nth-child(3) .nav-item a {
+    color: darkorange
+}
+
+lil:nth-child(4) .nav-item a {
+    color: red
+}
+
+li:nth-child(5) .nav-item a {
+    color: green
+}
