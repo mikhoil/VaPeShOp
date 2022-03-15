@@ -3,7 +3,7 @@ import {ProductCard} from "./product_card";
 
 
 export function Catalog(): JSX.Element {
-    const [state, setState] = useState()
+    const [state, setState] = useState();
     return (
         <>
             <ProductCard
