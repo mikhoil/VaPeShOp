@@ -8,7 +8,6 @@ ul {
 }
 
 .nav {
-    /*position: sticky;*/
     z-index: 15;
     margin-top: -20px;
 }
@@ -48,7 +47,7 @@ li:nth-child(3) .nav-item a {
     color: darkorange
 }
 
-lil:nth-child(4) .nav-item a {
+li:nth-child(4) .nav-item a {
     color: red
 }
 

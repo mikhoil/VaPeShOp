@@ -3,11 +3,9 @@
 }
 
 .App header {
-  /*position: fixed;*/
   padding-top: 30px;
   top: -15px;
   margin-top: -25px;
-  /*position: sticky;*/
   background-color: #73c3c9;
   width: 100%;
   z-index: 15;
@@ -19,4 +17,20 @@ a {
   font-weight: bold;
 }
 
+.cart__btn {
+  background-color: green;
+  color: #cccccc;
+  width: 12.5%;
+  height: 25%;
+  font-weight: bolder;
+  font-size: 18px;
+  float: right;
+  margin-top: 30px;
+  margin-right: 10px;
+  margin-left: -200px;
+}
 
+.cart__btn:hover {
+  background-color: #14d41e;
+  color: #d44b15;
+}

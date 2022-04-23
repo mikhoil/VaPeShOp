@@ -1,7 +1,7 @@
 import React from 'react';
 import './main.css'
 
-export function Main(): JSX.Element {
+export default function Main(): JSX.Element {
     return (
         <main>
             <article>

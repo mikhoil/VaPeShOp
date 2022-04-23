@@ -1,11 +1,11 @@
 import React from "react";
 import './navbar.css';
 import {Link, Routes, Route} from "react-router-dom";
-import {Catalog} from "./catalog";
-import {DelPay} from "./delivery_payment";
-import {Contacts} from "./contacts";
-import {Reviews} from "./reviews";
-import {Main} from './main';
+import Catalog from "./catalog";
+import DelPay from "./delivery_payment";
+import Contacts from "./contacts";
+import Reviews from "./reviews";
+import Main from './main';
 
 export function Navbar() {
     return (

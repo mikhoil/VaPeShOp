@@ -1,7 +1,7 @@
 import React from "react";
 
-export function Reviews(): JSX.Element {
+export default function Reviews(): JSX.Element {
     return (
         <></>
-    )
+    );
 }

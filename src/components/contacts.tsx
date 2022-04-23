@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function Contacts(): JSX.Element {
+export default function Contacts(): JSX.Element {
     return (
         <></>
     )

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export function DelPay(): JSX.Element {
+export default function DelPay(): JSX.Element {
     return (
         <></>
     )
