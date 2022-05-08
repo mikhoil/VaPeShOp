@@ -48,7 +48,6 @@ export default function Cart(): JSX.Element {
                     )
                 }
             </div>
-
         </>
     )
 }
