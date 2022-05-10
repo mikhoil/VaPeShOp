@@ -15,7 +15,7 @@ strong {
     background-color: var(--gray);
     padding: 30px;
     /*border: 1px solid var(--light-gray);*/
-    border-radius: 16px;
+    border-radius: var(--border-radius);
 }
 
 .contacts-block__head {
@@ -62,8 +62,8 @@ strong {
 
 .shop-list__wrapper {
     border-radius: 0;
-    border-bottom-left-radius: 16px;
-    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 }
 
 .shop-list {
@@ -97,4 +97,40 @@ strong {
     .shop-list__block, .shop-list__item {
         display: block;
     }
+}
+
+.balloon__block {
+
+}
+
+.balloon__block:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.balloon__title {
+    color: var(--light-gray);
+}
+
+.balloon__text {
+    color: var(--dark-gray);
+}
+
+.balloon__block-address .balloon__text {
+    font-size: 15px;
+}
+
+.balloon__block-work-time .balloon__text {
+
+}
+
+.balloon__footer {
+    border-top: 1px solid var(--light-gray);
+    margin-top: 10px;
+    padding-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.balloon__footer a:hover {
+    text-decoration: underline;
 }

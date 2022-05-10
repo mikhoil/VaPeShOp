@@ -70,7 +70,7 @@ class Footer extends Component {
                         </div>
                     </div>
                     <div className="footer__row footer-policy">
-                        <div className="footer-policy__company">
+                        {/*<div className="footer-policy__company">
                             <div className="footer-policy__site">
                                 © 2022-2022, Vape Shop
                             </div>
@@ -90,13 +90,13 @@ class Footer extends Component {
                                     <a href="#">Соглашение об использовании Cookie</a>
                                 </div>
                             </div>
-                        </div>
-                        <div className="footer-policy__law">
+                        </div>*/}
+                        {/*<div className="footer-policy__law">
                             <div className="footer-policy__law-block">
                                 <p>Доступ к сайту разрешен только лицам старше 18 лет, являющимся потребителями табака или иной никотиносодержащей продукции, которые в противном случае продолжат курить или употреблять иную никтотиносодержащую продукцию. Данный сайт не является рекламой, а служит лишь для предоставления достоверной информации о свойствах, характеристиках продукции и её наличии в магазинах сети. (п.1 и п.2 ст.10 Закона «О защите прав потребителей»). Дистанционная продажа и доставка никотиносодержащей продукции не осуществляется.</p>
                                 <div className="footer-policy__law-icon">18+</div>
                             </div>
-                        </div>
+                        </div>*/}
                     </div>
                 </div>
             </footer>

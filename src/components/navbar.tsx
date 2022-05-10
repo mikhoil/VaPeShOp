@@ -9,8 +9,9 @@ import Contacts from "./contacts";
 import Reviews from "./reviews";
 import Main from './main';
 import Cart from "./cart";
-import {ShoppingCartOutlined} from "@ant-design/icons";
 import {MdOutlineLocationOn} from "react-icons/md";
+import {BiUser, BiSearch} from "react-icons/bi";
+import {IoCartOutline} from "react-icons/io5";
 
 const { Header } = Layout;
 
@@ -19,11 +20,13 @@ export function NavBar() {
         <>
             <Header className="header">
                 <div className="header container">
-                    <div className="logo">
-                        <Link to="/">Vape <span style={{color: "var(--primary)"}}>Shop</span></Link>
-                    </div>
-                    <div className="header__nav__location">
+                    <div className="header__nav__logo">
                         <ul className="nav__menu">
+                            <li className="nav__item">
+                                <div className="logo">
+                                    <Link to="/">Vape <span style={{color: "var(--primary)"}}>Shop</span></Link>
+                                </div>
+                            </li>
                             <li className="nav__item">
                                 <MdOutlineLocationOn className="icon--mg-right"/>
                                 Екатеринбург
@@ -33,10 +36,22 @@ export function NavBar() {
                     <div className="header__nav__content">
                         <ul className="nav__menu">
                             <li className="nav__item">
-                                <Link to="cart" className="nav__link">
-                                    <ShoppingCartOutlined className="icon--mg-right"/>
-                                    Корзина
+                                <Link to="#" className="nav__link">
+                                    <BiSearch className="icon--mg-right"/>
                                 </Link>
+                            </li>
+                            <li className="nav__item">
+                                <Link to="#" className="nav__link">
+                                    <BiUser className="icon--mg-right"/>
+                                </Link>
+                            </li>
+                            <li className="nav__item">
+                                <Link to="cart" className="nav__link">
+                                    <IoCartOutline className="icon--mg-right"/>
+                                </Link>
+                            </li>
+                            <li className="nav__item">
+                                <a className="nav__link" href="tel:88005553535">8 800 555 35 35</a>
                             </li>
                         </ul>
                     </div>

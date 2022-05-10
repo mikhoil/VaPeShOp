@@ -1,7 +1,9 @@
 export type CartItemType = {
+    id: string
+    brand: string
     name: string
-    price: number
     photo: string
-    description: string
-    color: string
+    count: number
+    price: number
+    totalPrice: number
 }

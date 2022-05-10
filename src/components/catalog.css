@@ -1,14 +1,16 @@
 .filter {
-    flex: 0 0 max-content;
-    min-width: 300px;
+    max-width: 300px;
     height: max-content;
     background-color: var(--gray);
     order: 1;
-    border-radius: 16px;
+    border-radius: var(--border-radius);
+    grid-area: filter;
 }
 
 .catalog__container {
-    display: flex;
+    display: grid;
+    grid-template-areas: "catalog filter";
+    grid-template-columns: 1fr 300px;
     flex-direction: column;
     gap: 20px;
 }
@@ -17,6 +19,7 @@
     flex: 0 1 auto;
     order: 2;
     width: 100%;
+    grid-area: catalog;
 }
 
 @media (min-width: 980px) {

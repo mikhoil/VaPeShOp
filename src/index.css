@@ -1,9 +1,10 @@
 :root {
-  --primary: #35d035;
+  --primary: #17b76a /*#35d035*/;
   --dark-gray: #1e1e1e;
   --light-gray: #b2b2b2;
   --gray: #3d3d3d;
   --header-height: 64px;
+  --border-radius: 8px;
   --antd-wave-shadow-color: #35d035;
 }
 
@@ -15,6 +16,10 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-weight: 800;
+}
+
+img {
+  max-width: 100%;
 }
 
 @font-face {

@@ -8,55 +8,13 @@ import { BsStarFill } from "react-icons/bs";
 import { BsStarHalf } from "react-icons/bs";
 import { Button } from "antd";
 
-import ProductCard from "./product_card";
+import CatalogCard from "./catalogCard";
 import {Product} from "./product";
-
 import newProductImg from "../static/resources/img/ice.png";
-import vapeImg from "../static/resources/img/vape1.png";
+import catalogData from "../catalogData";
 
 export default function Main(): JSX.Element {
-    const [state, setState] = useState({
-        products: [{
-            name: 'Eleaf iJust 3 Kit',
-            price: 3300,
-            photo: vapeImg,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium atque cum cupiditate ' +
-                'debitis deleniti dolorem eaque earum enim iste labore necessitatibus, nemo officiis pariatur quae ' +
-                'sed totam veniam voluptatem voluptates.',
-            reviews: [
-                {author: 'Миша', text: 'Пока не кринжанул', mark: 2},
-                {author: 'Андрей', text: 'Кайфарики 8)', mark: 4},
-                {author: 'Петя', text: 'Круто', mark: 5}
-            ],
-            color: 'lightgreen'
-        },
-            {
-                name: 'Smoant Charon Baby POD Kit',
-                price: 2600,
-                photo: 'https://babylonvape.ru/upload/resize_cache/iblock/1d1/400_400_140cd750bba9870f18aada2478b24840a/1d1f9a2b0be9ad83b9db0cd294bda278.png',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium atque cum cupiditate ' +
-                    'debitis deleniti dolorem eaque earum enim iste labore necessitatibus, nemo officiis pariatur quae ' +
-                    'sed totam veniam voluptatem voluptates.',
-                reviews: [
-                    {author: 'Миша', text: 'Alles gut!', mark: 5},
-                    {author: 'Андрей', text: 'WoW!!!', mark: 2}
-                ],
-                color: '#ffc107'
-            },
-            {
-                name: 'Набор Voopoo V Thru Pro',
-                price: 3700,
-                photo: vapeImg,
-                description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium atque cum cupiditate ' +
-                    'debitis deleniti dolorem eaque earum enim iste labore necessitatibus, nemo officiis pariatur quae ' +
-                    'sed totam veniam voluptatem voluptates.',
-                reviews: [
-                    {author: 'Миша', text: 'Что это, черт побери, такое?!', mark: 3},
-                    {author: 'Андрей', text: 'No comments...', mark: 5}
-                ],
-                color: 'lightpink'
-            }]
-    });
+    const [catalogProducts, setCatalogProducts] = useState(catalogData);
 
     return (
         <>
@@ -76,7 +34,7 @@ export default function Main(): JSX.Element {
                 </section>
                 <section className="new-products">
                     <div className="background-text">
-                        <span className="background-text__title">NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW</span>
+                        <span className="background-text__title">NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW</span>
                     </div>
                     <div className="section-info">
                         <h2 className="section-info__title">Новинки</h2>
@@ -85,22 +43,24 @@ export default function Main(): JSX.Element {
                         {/* название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
                          подробнее - также Link на страницу товара */}
                         {
-                            state.products.map(({
+                            catalogProducts.map(({
+                                                    id,
+                                                    brand,
                                                     name,
                                                     price,
                                                     photo,
                                                     description,
-                                                    reviews,
-                                                    color
+                                                    reviews
                                                 }: Product, key: number): JSX.Element =>
-                                <ProductCard
+                                <CatalogCard
+                                    id={id}
                                     key={key}
+                                    brand={brand}
                                     name={name}
                                     price={price}
                                     photo={photo}
                                     description={description}
                                     reviews={reviews}
-                                    color={color}
                                 />
                             )
                         }
@@ -108,7 +68,7 @@ export default function Main(): JSX.Element {
                 </section>
                 <section className="sale-products">
                     <div className="background-text">
-                        <span className="background-text__title">SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE</span>
+                        <span className="background-text__title">SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE SALE</span>
                     </div>
                     <div className="section-info">
                         <h2 className="section-info__title">Распродажа</h2>
@@ -117,22 +77,24 @@ export default function Main(): JSX.Element {
                         {/* название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
                          подробнее - также Link на страницу товара */}
                         {
-                            state.products.map(({
-                                                    name,
-                                                    price,
-                                                    photo,
-                                                    description,
-                                                    reviews,
-                                                    color
-                                                }: Product, key: number): JSX.Element =>
-                                <ProductCard
+                            catalogProducts.map(({
+                                                     id,
+                                                     brand,
+                                                     name,
+                                                     price,
+                                                     photo,
+                                                     description,
+                                                     reviews
+                                                 }: Product, key: number): JSX.Element =>
+                                <CatalogCard
+                                    id={id}
                                     key={key}
+                                    brand={brand}
                                     name={name}
                                     price={price}
                                     photo={photo}
                                     description={description}
                                     reviews={reviews}
-                                    color={color}
                                 />
                             )
                         }
@@ -140,7 +102,7 @@ export default function Main(): JSX.Element {
                 </section>
                 <section className="about-us">
                     <div className="background-text">
-                        <span className="background-text__title">ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US</span>
+                        <span className="background-text__title">ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US ABOUT US</span>
                     </div>
                     <div className="section-info">
                         <h2 className="section-info__title">О нас</h2>

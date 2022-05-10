@@ -71,6 +71,7 @@
     display: flex;
     justify-content: end;
     align-items: center;
+    transition: color 0.3s;
 }
 
 .footer-main__contact-city:hover {

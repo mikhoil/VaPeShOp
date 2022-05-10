@@ -43,6 +43,12 @@ body {
   margin-left: 15px;
 }
 
+.btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
 }
@@ -62,4 +68,18 @@ a {
 
 .ant-btn.ant-btn-background-ghost:hover, .ant-btn.ant-btn-background-ghost:focus {
   border-color: var(--primary);
+}
+
+.ant-breadcrumb-link a,
+.ant-breadcrumb-separator {
+  color: #fff;
+  font-size: 16px;
+}
+
+.ant-breadcrumb li:last-child a {
+  color: var(--light-gray);
+}
+
+.ant-breadcrumb-link a:hover {
+  color: var(--primary);
 }
