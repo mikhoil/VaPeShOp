@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import {CartItemType} from "./cart_item_type";
 import {DeleteOutlined} from '@ant-design/icons';
 
-export default function CartItem({id, brand, name, price, photo, count, totalPrice}: CartItemType): JSX.Element {
+const CartItem = ({id, brand, name, price, photo, count, totalPrice}: CartItemType): JSX.Element => {
+
+
     return (
         <>
             <div className="cart-items__item">
@@ -24,3 +26,5 @@ export default function CartItem({id, brand, name, price, photo, count, totalPri
         </>
     );
 }
+
+export default CartItem

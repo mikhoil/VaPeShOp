@@ -9,6 +9,7 @@ import OrderStepForm from "./orderStepForm";
 
 import vapeImg from "../static/resources/img/vape1.png";
 import cartProductsData from "../cartData";
+import {OrderFormListItems} from "./orderFormListItems";
 
 const { TabPane } = Tabs;
 
@@ -23,6 +24,10 @@ export default function Cart(): JSX.Element {
 
     const updateKey = (value: string) => {
         setKey(value)
+    }
+
+    const updateCart = (newCartItems: Array<CartItemType>) => {
+        setCartProducts([...cartProducts])
     }
 
     useEffect(() => {
@@ -78,7 +83,7 @@ export default function Cart(): JSX.Element {
                 </div>
                 <div className="cart-wrapper">
                     <div className="cart-order">
-                        <OrderStepForm cart={cartProducts} updateKey={updateKey} step={+key}/>
+                        <OrderStepForm cart={cartProducts} updateKey={updateKey} updateCart={updateCart} step={+key}/>
                     </div>
                     <div className="cart-items">
                         <div className="cart-items__head">
@@ -88,28 +93,7 @@ export default function Cart(): JSX.Element {
                         </div>
                         <div className="cart-items__body">
                             <div className="cart-items__list">
-                                {
-                                    cartProducts.map(({
-                                                                 id,
-                                                                 brand,
-                                                                 name,
-                                                                 price,
-                                                                 photo,
-                                                                 count,
-                                                                 totalPrice
-                                                             }: CartItemType, key: number): JSX.Element =>
-                                        <CartItem
-                                            id={id}
-                                            brand={brand}
-                                            key={key}
-                                            name={name}
-                                            price={price}
-                                            photo={photo}
-                                            totalPrice={totalPrice}
-                                            count={count}
-                                        />
-                                    )
-                                }
+                                <OrderFormListItems items={cartProducts}/>
                             </div>
                         </div>
                         <div className="cart-items__footer">

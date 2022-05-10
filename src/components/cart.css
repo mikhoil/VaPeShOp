@@ -204,6 +204,7 @@
     display: grid;
     grid-template-areas:    "img info count price"
                             "img info count price";
+    grid-template-columns: 125px 1fr 150px 150px;
     background-color: var(--gray);
     border-radius: var(--border-radius);
     padding: 20px 30px;
@@ -260,7 +261,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 30px;
+    margin-left: 20px;
     grid-area: count;
 }
 
@@ -334,6 +335,7 @@
         grid-template-areas:    "img info info"
                                 "img info info"
                                 "count price price";
+        grid-template-columns: 150px 1fr 1fr;
         column-gap: 15px;
         row-gap: 15px;
     }
@@ -361,6 +363,8 @@
     .cart-order__form-item {
         grid-template-areas:    "img info count price"
                                 "img info count price";
+        grid-template-columns: 125px 1fr 150px 150px;
+
         column-gap: 15px;
         row-gap: 15px;
     }
@@ -389,6 +393,7 @@
         grid-template-areas:    "img info info"
                                 "img info info"
                                 "count price price";
+        grid-template-columns: 125px 1fr 1fr;
         column-gap: 15px;
         row-gap: 15px;
     }
@@ -414,6 +419,7 @@
                                 "info"
                                 "count"
                                 "price";
+        grid-template-columns: 1fr;
         column-gap: 15px;
         row-gap: 15px;
         padding: 20px 10px;

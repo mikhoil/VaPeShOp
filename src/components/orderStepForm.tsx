@@ -13,13 +13,16 @@ type Props = {
     cart: Array<CartItemType>
     step: number
     updateKey: (value: string) => void
+    updateCart: (value: Array<CartItemType>) => void
 };
 
 const OrderStepForm = (props: Props) => {
     const [currentStep, setCurrentStep] = useState(0);
     const [cart, setCart] = useState(Array<CartItemType>())
 
-    useEffect(() => { setCart(props.cart) }, [])
+    useEffect(() => {
+        setCart(props.cart)
+    }, [props.cart])
 
     useEffect(() => {
         props.updateKey(currentStep.toString())
@@ -38,7 +41,7 @@ const OrderStepForm = (props: Props) => {
         <>
             <div className="cart-order__block">
                 {currentStep === 0 && (
-                    <OrderFormList cartItems={cart}/>
+                    <OrderFormList cartItems={cart} updateCartItems={props.updateCart}/>
                 )}
                 {currentStep === 1 && (
                     <OrderFormDelivery/>
@@ -51,34 +54,26 @@ const OrderStepForm = (props: Props) => {
                 )}
             </div>
             <div className="cart-order__form-btns">
-                <button type="button" className="btn cart-order__form-btn cart-order__form-btn--prev"
-                        onClick={() => {
-                            if (currentStep > 0) {
+                {currentStep > 0 &&
+                    <button type="button" className="btn cart-order__form-btn cart-order__form-btn--prev"
+                            onClick={() => {
                                 setCurrentStep(currentStep - 1)
-                            }
-                        }}
-                >
-                    Назад
-                </button>
-                <button type="button" className="btn cart-order__form-btn cart-order__form-btn--next"
-                        onClick={() => {
-                            if (currentStep < 3) {
+                            }}
+                    >
+                        Назад
+                    </button>
+                }
+                {currentStep < 3 &&
+                    <button type="button" className="btn cart-order__form-btn cart-order__form-btn--next"
+                            onClick={() => {
                                 setCurrentStep(currentStep + 1)
-                            }
-                        }}
-                >
-                    Далее
-                </button>
-            </div>
-            {/*<div className="cart-order__block cart-order__delivery">
+                            }}
+                    >
+                        Далее
+                    </button>
+                }
 
             </div>
-            <div className="cart-order__block cart-order__pay">
-
-            </div>
-            <div className="cart-order__block cart-order__complete">
-
-            </div>*/}
         </>
     );
 };

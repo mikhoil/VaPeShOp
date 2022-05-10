@@ -164,6 +164,7 @@ section:not(:first-of-type) {
     padding: 30px;
     gap: 15px;
     border-radius: var(--border-radius);
+    height: max-content;
 }
 
 .products__item__img {

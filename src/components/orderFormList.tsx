@@ -15,6 +15,7 @@ type Inputs = {
 
 type Props = {
     cartItems: Array<CartItemType>
+    updateCartItems: (value: Array<CartItemType>) => void
 }
 
 const OrderFormList = (props: Props) => {
@@ -22,17 +23,14 @@ const OrderFormList = (props: Props) => {
 
     useEffect(() => {
         setCartProducts(props.cartItems)
-    }, [])
-
-    /*useEffect(() => {
-        console.log("order list level", cartProducts)
-    }, [cartProducts]);*/
+    }, [props.cartItems])
 
     const increase_amount = (id:string, amount: number): void => {
         let cartItem = cartProducts.find(x => x.id === id)
         if (cartItem) {
             cartItem.count++
             cartItem.totalPrice = cartItem.price * cartItem.count
+            props.updateCartItems(cartProducts)
         }
     };
     const decrease_amount = (id:string, amount: number): void => {
@@ -40,6 +38,7 @@ const OrderFormList = (props: Props) => {
         if (cartItem) {
             cartItem.count = amount - +(amount > 1)
             cartItem.totalPrice = cartItem.price * cartItem.count
+            props.updateCartItems(cartProducts)
         }
     };
 
