@@ -26,12 +26,12 @@ img {
   font-family: Gilroy;
   font-weight: 400;
   font-style: normal;
-  src: url("static/resources/fonts/gilroy-light.woff") format("woff");
+  src: url("./static/fonts/gilroy-light.woff") format("woff");
 }
 
 @font-face {
   font-family: Gilroy;
   font-weight: 800;
   font-style: normal;
-  src: url("static/resources/fonts/gilroy-extra-bold.woff") format("woff");
+  src: url("./static/fonts/gilroy-extra-bold.woff") format("woff");
 }

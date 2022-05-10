@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-import {Logo} from "./components/logo";
-import {NavBar} from "./components/navbar";
+import {HeaderNavBar} from "./components/HeaderNavBar/headerNavBar";
+import {Footer} from "./components/Footer/footer";
 import {Link, Route, Routes, useLocation} from "react-router-dom";
-import Cart from './components/cart';
-import Footer from "./components/footer";
 import {Breadcrumb} from "antd";
 
-function App(): JSX.Element {
+export const App = () => {
     const breadcrumbNameMap = new Map<string, string>();
     breadcrumbNameMap.set('/', 'Главная');
     breadcrumbNameMap.set('/catalog', 'Каталог');
@@ -42,11 +40,9 @@ function App(): JSX.Element {
                         <Breadcrumb>{breadcrumbItems}</Breadcrumb>
                     </div>
                 }
-                <NavBar/>
+                <HeaderNavBar/>
             </div>
             <Footer/>
         </div>
     );
 }
-
-export default App;

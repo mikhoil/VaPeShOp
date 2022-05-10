@@ -81,6 +81,6 @@ const catalog = [
             {author: 'Миша', text: 'Alles gut!', mark: 5},
         ]
     }
-];
+]
 
 export default catalog
