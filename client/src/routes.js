@@ -6,6 +6,7 @@ import {
     REGISTRATION_ROUTE, REVIEWS_ROUTE,
     USER_PAGE_ROUTE
 } from "./utils/constRoutes";
+
 import {Admin} from "./components/Admin/admin";
 import {UserPage} from "./components/UserPage/userPage";
 import {CatalogProduct} from "./components/Catalog/catalogProduct";
@@ -17,6 +18,7 @@ import {Reviews} from "./components/Reviews/reviews";
 import {Main} from "./components/Main/main";
 import {Catalog} from "./components/Catalog/catalog";
 import {CatalogCardContent} from "./components/Catalog/catalogCardContent";
+import {NoMatch} from "./components/NoMatch/noMatch";
 
 export const authRoutes = [
     {
@@ -43,6 +45,10 @@ export const publicRoutes = [
         component: <CatalogCardContent/>
     },
     {
+        path: CATALOG_ROUTE + "/:type" + '/:id',
+        component: <CatalogProduct/>
+    },
+    {
         path: CART_ROUTE,
         component: <Cart/>
     },
@@ -55,10 +61,6 @@ export const publicRoutes = [
         component: <Auth/>
     },
     {
-        path: CATALOG_ROUTE + "/:type" + '/:id',
-        component: <CatalogProduct/>
-    },
-    {
         path: DELIVERY_PAYMENT_ROUTE,
         component: <DeliveryPayment/>
     },
@@ -69,6 +71,10 @@ export const publicRoutes = [
     {
         path: REVIEWS_ROUTE,
         component: <Reviews/>
+    },
+    {
+        path: "*",
+        component: <NoMatch/>
     }
 ]
 

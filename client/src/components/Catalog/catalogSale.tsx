@@ -6,6 +6,7 @@ import {CatalogProductItem} from "../CatalogProductItem/catalogProductItem";
 
 type Props = {
     catalogData: Array<ProductType>
+    catalogLink: string
 };
 export const CatalogSale = (props: Props) => {
     const [catalogItems, setCatalogItems] = useState(Array<ProductType>())

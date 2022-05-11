@@ -13,14 +13,16 @@ export const AppRouter = (props: Props) => {
     const isAuth = false
     return (
         <div className="app__wrapper">
-            <Routes>
-                {isAuth && authRoutes.map(({path, component}) =>
-                    <Route path={path} element={component}/>
-                )}
-                {publicRoutes.map(({path, component}) =>
-                    <Route path={path} element={component}/>
-                )}
-            </Routes>
+            <Container>
+                <Routes>
+                    {isAuth && authRoutes.map(({path, component}) =>
+                        <Route path={path} element={component}/>
+                    )}
+                    {publicRoutes.map(({path, component}) =>
+                        <Route path={path} element={component}/>
+                    )}
+                </Routes>
+            </Container>
             <Footer/>
         </div>
     );

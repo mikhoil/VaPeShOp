@@ -15,6 +15,7 @@ import {CatalogCardContent} from "./catalogCardContent";
 import catalogDevices from "../../catalogDevices";
 import {CatalogProductItem} from "../CatalogProductItem/catalogProductItem";
 import {Container} from "../Container/container";
+import {CatalogProduct} from "./catalogProduct";
 
 const {Panel} = Collapse;
 
@@ -26,7 +27,7 @@ export const Catalog = () => {
     const colorCheckboxOptions = ["Белый", "Черный", "Синий", "Красный"];
 
     return (
-        <Container>
+        <>
             <section className="catalog">
                 <div className="section-info">
                     <h2 className="section-info__title">Каталог</h2>
@@ -82,6 +83,6 @@ export const Catalog = () => {
                     </div>
                 </div>
             </section>
-        </Container>
+        </>
     );
 }

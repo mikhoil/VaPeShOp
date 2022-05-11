@@ -5,44 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06e1afc5-fc87-41e5-b9d5-ca430355b750" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/catalogCards.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Admin/admin.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/AppRouter/appRouter.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Auth/auth.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogCard.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogCardContent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogCardType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogNew.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogProduct.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogSale.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/CatalogProductItem/catalogProductItem.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Container/container.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Container/container.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/NoMatch/noMatch.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/NoMatch/noMatch.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/UserPage/userPage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/routes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/utils/constRoutes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/models/models.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/controllers/brandController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/controllers/productController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/controllers/typeController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/error/apiError.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/middleware/ErrorHandlingMiddleware.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/brandRouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/productRouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/typeRouter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/routes/userRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/catalogData.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/catalogDevices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/AppRouter/appRouter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/AppRouter/appRouter.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Cart/cart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Cart/cart.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Catalog/catalog.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalog.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Catalog/catalog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CatalogCard/catalogCard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CatalogCard/catalogCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CatalogProductItem/catalogProductItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/CatalogCard/productType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CatalogProductItem/productType.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Catalog/catalogCardContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogCardContent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Catalog/catalogNew.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogNew.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Catalog/catalogProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogProduct.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Catalog/catalogSale.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Catalog/catalogSale.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/CatalogProductItem/catalogProductItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/CatalogProductItem/catalogProductItem.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Contacts/contacts.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Contacts/contacts.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/DeliveryPayment/deliveryPayment.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/DeliveryPayment/deliveryPayment.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/HeaderNavBar/headerNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/HeaderNavBar/headerNavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/Main/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Main/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Reviews/reviews.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Reviews/reviews.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/.env" beforeDir="false" afterPath="$PROJECT_DIR$/server/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/models.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/models.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/node_modules/uuid/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/node_modules/uuid/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +46,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="TypeScript JSX File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -79,6 +72,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/server/controllers" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -89,6 +83,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Huawei\WebstormProjects\VapeShop\VaPeShOp\server\controllers" />
+      <recent name="C:\Users\Huawei\WebstormProjects\VapeShop\VaPeShOp\server\routes" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Huawei\WebstormProjects\VapeShop\VaPeShOp\client\src\components\Catalog" />
       <recent name="C:\Users\Huawei\WebstormProjects\VapeShop\VaPeShOp\client\src\components" />
@@ -106,7 +104,9 @@
       <updated>1652213470058</updated>
       <workItem from="1652213472625" duration="2788000" />
       <workItem from="1652220927852" duration="8853000" />
-      <workItem from="1652231083453" duration="7578000" />
+      <workItem from="1652231083453" duration="7972000" />
+      <workItem from="1652257587463" duration="2547000" />
+      <workItem from="1652260281907" duration="14687000" />
     </task>
     <servers />
   </component>

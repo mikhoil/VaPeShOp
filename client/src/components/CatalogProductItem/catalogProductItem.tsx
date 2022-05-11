@@ -65,7 +65,7 @@ export const CatalogProductItem = ({id, brand, name, price, photo, description, 
                 <span>{price} Р</span>
             </div>
             <div className="products__item__btns">
-                <Link to={'/catalog/new/' + id} className="btn">
+                <Link to={window.location.pathname + "/" + id} className="btn">
                     <Button className="btn products__item__more-info-btn" ghost={true} icon={<BsArrowRightCircle className="icon--mg-right"></BsArrowRightCircle>}>Подробнее</Button>
                 </Link>
                 <Button className="btn products__item__add-btn" ghost={true} icon={<BsPlusCircle className="icon--mg-right"></BsPlusCircle>}>В корзину</Button>

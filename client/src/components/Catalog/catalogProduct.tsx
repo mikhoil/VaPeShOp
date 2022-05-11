@@ -8,8 +8,8 @@ type Props = {
 
 export const CatalogProduct = (props: Props) => {
     return (
-        <Container>
+        <>
             Страница товара
-        </Container>
+        </>
     );
 };

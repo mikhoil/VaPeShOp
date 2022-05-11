@@ -31,7 +31,7 @@ export const CatalogCardContent = (props: Props) => {
     }, [props.data])*/
 
     return (
-        <Container>
+        <>
             <div className="section-info">
                 <h2 className="section-info__title">Каталог</h2>
             </div>
@@ -93,6 +93,6 @@ export const CatalogCardContent = (props: Props) => {
                     }
                 </div>
             </div>
-        </Container>
+        </>
     )
 }

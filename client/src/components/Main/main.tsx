@@ -17,7 +17,7 @@ export const Main = () => {
     const [catalogProducts, setCatalogProducts] = useState(catalogData);
 
     return (
-        <Container>
+        <>
             <main className="main-container">
                 <section className="best-product">
                     <div className="best-product__img">
@@ -42,7 +42,7 @@ export const Main = () => {
                     <div className="products__items">
                     {/*название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
                     подробнее - также Link на страницу товара*/}
-                        <CatalogNew catalogData={catalogProducts}/>
+                        <CatalogNew catalogData={catalogProducts} catalogLink={"catalog/new"}/>
                     </div>
                 </section>
                 <section className="sale-products">
@@ -55,7 +55,7 @@ export const Main = () => {
                     <div className="products__items">
                     {/*название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
                     подробнее - также Link на страницу товара*/}
-                        <CatalogSale catalogData={catalogProducts}/>
+                        <CatalogSale catalogData={catalogProducts} catalogLink={"catalog/sale"}/>
                     </div>
                 </section>
                 <section className="about-us">
@@ -78,6 +78,6 @@ export const Main = () => {
                     </div>
                 </section>
             </main>
-        </Container>
+        </>
     )
 }

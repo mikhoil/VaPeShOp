@@ -84,7 +84,7 @@ export const Contacts = () => {
     }
 
     return (
-        <Container>
+        <>
             <section className="contacts">
                 <div className="contacts-block">
                     <div className="contacts-block__head">
@@ -184,6 +184,6 @@ export const Contacts = () => {
                     </div>
                 </div>
             </section>
-        </Container>
+        </>
     )
 }

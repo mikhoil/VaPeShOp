@@ -13,6 +13,7 @@ import {Cart} from "./components/Cart/cart";
 import {CatalogCardContent} from "./components/Catalog/catalogCardContent";
 import {CatalogProduct} from "./components/Catalog/catalogProduct";
 import {AppRouter} from "./components/AppRouter/appRouter";
+import {Container} from "./components/Container/container";
 
 export const App = () => {
     return (
