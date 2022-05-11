@@ -3,17 +3,21 @@ import './main.css'
 import { Link, Routes, Route } from "react-router-dom";
 import { BsArrowRightCircle } from "react-icons/bs";
 
-import {CatalogCard} from "../CatalogCard/catalogCard";
-import {ProductType} from "../CatalogCard/productType";
+import {CatalogCard} from "../Catalog/catalogCard";
+import {ProductType} from "../CatalogProductItem/productType";
 
 import newProductImg from "../../static/img/ice.png";
-import catalogData from "../../catalogData";
+import catalogData from "../../catalogDevices";
+import {CatalogProductItem} from "../CatalogProductItem/catalogProductItem";
+import {Container} from "../Container/container";
+import {CatalogSale} from "../Catalog/catalogSale";
+import {CatalogNew} from "../Catalog/catalogNew";
 
 export const Main = () => {
     const [catalogProducts, setCatalogProducts] = useState(catalogData);
 
     return (
-        <>
+        <Container>
             <main className="main-container">
                 <section className="best-product">
                     <div className="best-product__img">
@@ -36,30 +40,9 @@ export const Main = () => {
                         <h2 className="section-info__title">Новинки</h2>
                     </div>
                     <div className="products__items">
-                        {/* название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
-                         подробнее - также Link на страницу товара */}
-                        {
-                            catalogProducts.map(({
-                                                    id,
-                                                    brand,
-                                                    name,
-                                                    price,
-                                                    photo,
-                                                    description,
-                                                    reviews
-                                                }: ProductType, key: number): JSX.Element =>
-                                <CatalogCard
-                                    id={id}
-                                    key={key}
-                                    brand={brand}
-                                    name={name}
-                                    price={price}
-                                    photo={photo}
-                                    description={description}
-                                    reviews={reviews}
-                                />
-                            )
-                        }
+                    {/*название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
+                    подробнее - также Link на страницу товара*/}
+                        <CatalogNew catalogData={catalogProducts}/>
                     </div>
                 </section>
                 <section className="sale-products">
@@ -70,30 +53,9 @@ export const Main = () => {
                         <h2 className="section-info__title">Распродажа</h2>
                     </div>
                     <div className="products__items">
-                        {/* название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
-                         подробнее - также Link на страницу товара */}
-                        {
-                            catalogProducts.map(({
-                                                     id,
-                                                     brand,
-                                                     name,
-                                                     price,
-                                                     photo,
-                                                     description,
-                                                     reviews
-                                                 }: ProductType, key: number): JSX.Element =>
-                                <CatalogCard
-                                    id={id}
-                                    key={key}
-                                    brand={brand}
-                                    name={name}
-                                    price={price}
-                                    photo={photo}
-                                    description={description}
-                                    reviews={reviews}
-                                />
-                            )
-                        }
+                    {/*название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
+                    подробнее - также Link на страницу товара*/}
+                        <CatalogSale catalogData={catalogProducts}/>
                     </div>
                 </section>
                 <section className="about-us">
@@ -116,6 +78,6 @@ export const Main = () => {
                     </div>
                 </section>
             </main>
-        </>
+        </Container>
     )
 }

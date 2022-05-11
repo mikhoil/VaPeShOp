@@ -9,6 +9,7 @@ import {OrderStepForm} from "../OrderForm/orderStepForm";
 import {CartItems} from "./cartItems";
 
 import cartProductsData from "../../cartData";
+import {Container} from "../Container/container";
 
 const { TabPane } = Tabs;
 
@@ -42,7 +43,7 @@ export const Cart = () => {
     }, [key])
 
     return (
-        <>
+        <Container>
             <section className="cart">
                 <div className="cart-tabs">
                     <Tabs activeKey={key}
@@ -110,6 +111,6 @@ export const Cart = () => {
                     </div>
                 </div>
             </section>
-        </>
+        </Container>
     )
 }

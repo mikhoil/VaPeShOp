@@ -8,6 +8,7 @@ body {
   background-image: url("./static/backgrounds/background.jpg");
   background-repeat: repeat;
   background-position: 0 0;
+  overflow-x: hidden;
 }
 
 .app__wrapper {

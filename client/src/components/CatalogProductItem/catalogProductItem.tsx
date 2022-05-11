@@ -1,10 +1,14 @@
 import React, {useState} from "react";
-import "../CatalogCard/catalogCard.css"
-import {ProductType} from "./productType.js";
+import {ProductType} from "./productType";
 import {BsArrowRightCircle, BsPlusCircle, BsStar, BsStarFill, BsStarHalf} from "react-icons/bs";
 import {Button} from "antd";
+import {Link} from "react-router-dom";
 
-export const CatalogCard = ({brand, name, price, photo, description, reviews}: ProductType) =>  {
+type Props = {
+
+};
+
+export const CatalogProductItem = ({id, brand, name, price, photo, description, reviews}: ProductType) =>  {
     const [productMark, setProductMark] = useState(0);
 
     const mark = reviews.reduce((sum, current) => {
@@ -61,9 +65,12 @@ export const CatalogCard = ({brand, name, price, photo, description, reviews}: P
                 <span>{price} Р</span>
             </div>
             <div className="products__item__btns">
-                <Button className="btn products__item__more-info-btn" ghost={true} icon={<BsArrowRightCircle className="icon--mg-right"></BsArrowRightCircle>}>Подробнее</Button>
+                <Link to={'/catalog/new/' + id} className="btn">
+                    <Button className="btn products__item__more-info-btn" ghost={true} icon={<BsArrowRightCircle className="icon--mg-right"></BsArrowRightCircle>}>Подробнее</Button>
+                </Link>
                 <Button className="btn products__item__add-btn" ghost={true} icon={<BsPlusCircle className="icon--mg-right"></BsPlusCircle>}>В корзину</Button>
             </div>
         </div>
     );
 }
+

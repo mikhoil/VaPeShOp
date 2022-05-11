@@ -1,32 +1,38 @@
 import React, {useState} from "react";
 import './catalog.css'
-import {ProductType} from "../CatalogCard/productType";
+import {ProductType} from "../CatalogProductItem/productType";
 import {Breadcrumb, Collapse} from "antd";
 import {Slider} from "antd";
 import {Checkbox} from "antd";
 
-import catalogData from "../../catalogData";
+import catalogData from "../../catalogDevices";
+import catalogCards from "../../catalogCards";
 
-import {Link, useLocation} from "react-router-dom";
-import {CatalogCard} from "../CatalogCard/catalogCard";
+import {Link, useLocation, Routes, Route} from "react-router-dom";
+import {CatalogCard} from "./catalogCard";
+import {CatalogCardType} from "./catalogCardType";
+import {CatalogCardContent} from "./catalogCardContent";
+import catalogDevices from "../../catalogDevices";
+import {CatalogProductItem} from "../CatalogProductItem/catalogProductItem";
+import {Container} from "../Container/container";
 
 const {Panel} = Collapse;
 
 export const Catalog = () => {
-    const [catalogProducts, setCatalogProducts] = useState(catalogData);
+    const [catalogProducts, setCatalogProducts] = useState(catalogDevices)
 
     const brandCheckboxOptions = ['VooPoo', 'Eleaf', 'Smoant', "GeekVape"];
     const puffCheckboxOptions = ["Свободная (DL)", "Тугая (MTL)"];
     const colorCheckboxOptions = ["Белый", "Черный", "Синий", "Красный"];
 
     return (
-        <>
+        <Container>
             <section className="catalog">
                 <div className="section-info">
                     <h2 className="section-info__title">Каталог</h2>
                 </div>
                 <div className="catalog__container">
-                    <div className="filter">
+                    {/*<div className="filter">
                         <Collapse defaultActiveKey={["1", "2", "3", "4", "5"]} ghost>
                             <Panel className="filter__price" key="1" header="Цена">
                                 <Slider
@@ -57,33 +63,25 @@ export const Catalog = () => {
                                 </Checkbox.Group>
                             </Panel>
                         </Collapse>
-                    </div>
+                    </div>*/}
                     <div className="products__items catalog__items">
                         {
-                            catalogProducts.map(({
-                                                    id,
-                                                    brand,
-                                                    name,
-                                                    price,
-                                                    photo,
-                                                    description,
-                                                    reviews
-                                                }: ProductType, key: number): JSX.Element =>
-                                <CatalogCard
-                                    id={id}
-                                    key={key}
-                                    brand={brand}
-                                    name={name}
-                                    price={price}
-                                    photo={photo}
-                                    description={description}
-                                    reviews={reviews}
-                                />
+                            catalogCards.map(({
+                                                    type,
+                                                    img,
+                                                    link
+                                                }: CatalogCardType, key: number): JSX.Element =>
+                                <Link to={link}>
+                                    <CatalogCard
+                                        type={type}
+                                        img={img}
+                                    />
+                                </Link>
                             )
                         }
                     </div>
                 </div>
             </section>
-        </>
+        </Container>
     );
 }

@@ -13,6 +13,8 @@ import {Cart} from "../Cart/cart";
 import {MdOutlineLocationOn} from "react-icons/md";
 import {BiUser, BiSearch} from "react-icons/bi";
 import {IoCartOutline} from "react-icons/io5";
+import {CatalogCardContent} from "../Catalog/catalogCardContent";
+import catalogDevices from "../../catalogDevices";
 
 const { Header } = Layout;
 
@@ -68,14 +70,6 @@ export const HeaderNavBar = () => {
                     </ul>
                 </div>
             </Header>
-            <Routes>
-                <Route path='/' element={<Main/>}/>
-                <Route path="/catalog" element={<Catalog/>}/>
-                <Route path="/delivery-payment" element={<DeliveryPayment/>}/>
-                <Route path="/contacts" element={<Contacts/>}/>
-                <Route path="/reviews" element={<Reviews/>}/>
-                <Route path="/cart" element={<Cart/>}/>
-            </Routes>
         </>
     );
 }
