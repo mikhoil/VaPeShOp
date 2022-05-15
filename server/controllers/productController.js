@@ -1,21 +1,19 @@
 const uuid = require('uuid')
 const path = require('path')
-let fs = require('fs');
-const {Product, ProductInfo} = require('../models/models')
+const {Product, ProductInfo, Type, Brand, Review} = require('../models/models')
 const ApiError = require('../error/ApiError');
-const webp = require("webp-converter");
-
-webp.grant_permission()
+const apiError = require("../error/apiError");
 
 class ProductController {
     async create(req, res, next) {
         try {
-            let {name, price, brandId, typeId, info} = req.body
-            const {img} = req.files
+            let {name, price, rating, brandId, typeId, info} = req.body
+            console.log(req.files)
+            let {img} = req.files
             let fileName = uuid.v4() + '.png'
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-            const product = await Product.create({name, price, brandId, typeId, img: fileName});
+            const product = await Product.create({name, price, rating, brandId, typeId, img: fileName});
 
             if (info) {
                 info = JSON.parse(info)
@@ -36,37 +34,67 @@ class ProductController {
     }
 
     async getAll(req, res) {
-        let {brandId, typeId, limit, page} = req.query
+        let {brandId, typeId, limit, page, sortValue, sortType} = req.query
         page = page || 1
         limit = limit || 12
 
         let offset = page * limit - limit
         let products;
+        let productWhereOptions = {}
+        let productOrderSettings = []
+
+        if (sortValue) sortValue = sortValue.replace(/'/g,"");
+        if (sortType) sortType = sortType.replace(/'/g,"");
+
+        if (brandId) productWhereOptions = {brandId}
+        if (typeId) productWhereOptions = {typeId}
+        if (brandId && typeId) productWhereOptions = {brandId, typeId}
+        if (sortValue && sortType) productOrderSettings = [[sortValue, sortType]]
 
         if (!brandId && !typeId) {
-            products = await Product.findAndCountAll({limit, offset})
+            products = await Product.findAndCountAll({
+                include: [
+                    {model: Brand},
+                    {model: Type},
+                    {model: Review}
+                ],
+                limit,
+                offset,
+                order: productOrderSettings
+            })
+            return res.json(products)
         }
-        if (brandId && !typeId) {
-            products = await Product.findAndCountAll({where: {brandId}, limit, offset})
-        }
-        if (!brandId && typeId) {
-            products = await Product.findAndCountAll({where: {typeId}, limit, offset})
-        }
-        if (brandId && typeId) {
-            products = await Product.findAndCountAll({where: {typeId, brandId}, limit, offset})
-        }
+
+        products = await Product.findAndCountAll({
+            where: productWhereOptions,
+            include: [
+                {model: Brand},
+                {model: Type},
+                {model: Review}
+            ],
+            limit,
+            offset,
+            order: productOrderSettings
+        })
         return res.json(products)
     }
 
-    async getOne(req, res) {
-        const {id} = req.params
-        const product = await Product.findOne(
-            {
+    async getOne(req, res, next) {
+        try {
+            const {id} = req.params;
+            let devices = await Product.findOne({
                 where: {id},
-                include: [{model: ProductInfo, as: 'info'}]
-            },
-        )
-        return res.json(product)
+                include: [
+                    {model: ProductInfo, as: 'info'},
+                    {model: Type},
+                    {model: Brand},
+                    {model: Review}
+                ]
+            });
+            return res.json(devices);
+        } catch (e) {
+            next(apiError.badRequest(e.message));
+        }
     }
 }
 

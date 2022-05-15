@@ -6,6 +6,7 @@ import { BsArrowRightCircle } from "react-icons/bs";
 import {CatalogCard} from "../Catalog/catalogCard";
 import {ProductType} from "../CatalogProductItem/productType";
 
+// @ts-ignore
 import newProductImg from "../../static/img/ice.png";
 import catalogData from "../../catalogDevices";
 import {CatalogProductItem} from "../CatalogProductItem/catalogProductItem";
@@ -42,7 +43,7 @@ export const Main = () => {
                     <div className="products__items">
                     {/*название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
                     подробнее - также Link на страницу товара*/}
-                        <CatalogNew catalogData={catalogProducts} catalogLink={"catalog/new"}/>
+                        <CatalogNew/>
                     </div>
                 </section>
                 <section className="sale-products">
@@ -55,7 +56,7 @@ export const Main = () => {
                     <div className="products__items">
                     {/*название товара обернуть в Link на страницу товара, отзывы также, только с якорем к блоку отзывов,
                     подробнее - также Link на страницу товара*/}
-                        <CatalogSale catalogData={catalogProducts} catalogLink={"catalog/sale"}/>
+                        <CatalogSale/>
                     </div>
                 </section>
                 <section className="about-us">

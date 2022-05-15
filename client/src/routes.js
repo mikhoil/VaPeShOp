@@ -7,74 +7,77 @@ import {
     USER_PAGE_ROUTE
 } from "./utils/constRoutes";
 
-import {Admin} from "./components/Admin/admin";
-import {UserPage} from "./components/UserPage/userPage";
-import {CatalogProduct} from "./components/Catalog/catalogProduct";
-import {Auth} from "./components/Auth/auth";
-import {Cart} from "./components/Cart/cart";
-import {DeliveryPayment} from "./components/DeliveryPayment/deliveryPayment";
-import {Contacts} from "./components/Contacts/contacts";
-import {Reviews} from "./components/Reviews/reviews";
-import {Main} from "./components/Main/main";
-import {Catalog} from "./components/Catalog/catalog";
-import {CatalogCardContent} from "./components/Catalog/catalogCardContent";
+import {Admin} from "./pages/Admin";
+import {UserPage} from "./pages/UserPage";
+import {Product} from "./pages/Product";
+import {Auth} from "./pages/Auth";
+import {Cart} from "./pages/Cart";
+import {DeliveryPayment} from "./pages/DeliveryPayment";
+import {Contacts} from "./pages/Contacts";
+import {Reviews} from "./pages/Reviews";
+import {Main} from "./pages/Main";
+import {Catalog} from "./pages/Catalog";
+import {CatalogCardContent} from "./pages/CatalogCardContent";
 import {NoMatch} from "./components/NoMatch/noMatch";
+
+export const adminRoutes = [
+    {
+        path: ADMIN_ROUTE,
+        Component: <Admin/>
+    }
+]
 
 export const authRoutes = [
     {
-        path: ADMIN_ROUTE,
-        component: <Admin/>
-    },
-    {
         path: USER_PAGE_ROUTE,
-        component: <UserPage/>
+        Component: <UserPage/>
     }
 ]
 
 export const publicRoutes = [
     {
         path: MAIN_ROUTE,
-        component: <Main/>
+        Component: <Main/>
     },
     {
         path: CATALOG_ROUTE,
-        component: <Catalog/>
+        Component: <Catalog/>
     },
     {
         path: CATALOG_ROUTE + "/:type",
-        component: <CatalogCardContent/>
+        Component: <CatalogCardContent/>
     },
     {
-        path: CATALOG_ROUTE + "/:type" + '/:id',
-        component: <CatalogProduct/>
+        path: CATALOG_ROUTE + "/:type" + PRODUCT_ROUTE + '/:id',
+        Component: <Product/>
     },
     {
         path: CART_ROUTE,
-        component: <Cart/>
+        Component: <Cart/>
     },
     {
         path: LOGIN_ROUTE,
-        component: <Auth/>
+        Component: <Auth/>
     },
     {
         path: REGISTRATION_ROUTE,
-        component: <Auth/>
+        Component: <Auth/>
     },
     {
         path: DELIVERY_PAYMENT_ROUTE,
-        component: <DeliveryPayment/>
+        Component: <DeliveryPayment/>
     },
     {
         path: CONTACTS_ROUTE,
-        component: <Contacts/>
+        Component: <Contacts/>
     },
     {
         path: REVIEWS_ROUTE,
-        component: <Reviews/>
+        Component: <Reviews/>
     },
     {
         path: "*",
-        component: <NoMatch/>
+        Component: <NoMatch/>
     }
 ]
 

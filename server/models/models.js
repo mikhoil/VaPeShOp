@@ -10,20 +10,18 @@ const User = sequelize.define('user', {
 
 const Cart = sequelize.define('cart', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    email: {type: DataTypes.STRING, unique: true},
-    password: {type: DataTypes.STRING},
-    role: {type: DataTypes.STRING, defaultValue: "USER"}
 })
 
 const CartProduct = sequelize.define('cart_product', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    productId: {type: DataTypes.INTEGER},
 })
 
 const Product = sequelize.define('product', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
     price: {type: DataTypes.INTEGER, allowNull: false},
-    review: {type: DataTypes.INTEGER, defaultValue: null},
+    rating: {type: DataTypes.FLOAT, defaultValue: 0},
     img: {type: DataTypes.STRING, allowNull: false},
 })
 
@@ -36,6 +34,7 @@ const ProductInfo = sequelize.define('product_info', {
 const Type = sequelize.define('type', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
+    img: {type: DataTypes.STRING, allowNull: false}
 })
 
 const Brand = sequelize.define('brand', {

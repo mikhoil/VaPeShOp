@@ -12,7 +12,7 @@ export const CatalogCard = (props: Props) =>  {
     return (
         <div className="products__item">
             <div className="products__item__img">
-                <img src={`/resources/img/${props.img}`} alt={props.type}/>
+                <img src={'http://localhost:3001/' + props.img} alt={props.type}/>
             </div>
             <div className="products__item__title">
                 <span>{props.type}</span>

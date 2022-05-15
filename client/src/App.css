@@ -21,10 +21,6 @@ body {
   flex: 1 0 auto;
 }
 
-.btn {
-  border: none;
-}
-
 .container {
   width: 100%;
   max-width: 1440px;
@@ -48,6 +44,22 @@ body {
   background-color: transparent;
   border: none;
   cursor: pointer;
+}
+
+.btn-default {
+  background-color: var(--gray);
+  transition: all 0.3s ease-in;
+  color: white;
+  padding: 7px 15px;
+  border-radius: var(--border-radius);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+}
+
+.btn-default:hover {
+  background-color: var(--primary);
 }
 
 a {
@@ -83,4 +95,12 @@ a {
 
 .ant-breadcrumb-link a:hover {
   color: var(--primary);
+}
+
+.loader {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

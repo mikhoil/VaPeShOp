@@ -1,0 +1,174 @@
+.filter {
+    max-width: 300px;
+    height: max-content;
+    background-color: var(--gray);
+    order: 1;
+    border-radius: var(--border-radius);
+    grid-area: filter;
+}
+
+.catalog__container {
+    display: block;
+}
+
+.catalog-card__link {
+    height: 100%;
+}
+
+.catalog__container.catalog__products {
+    display: grid;
+    grid-template-areas: "catalog filter";
+    grid-template-columns: 1fr 300px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.catalog__container .catalog__items {
+    flex: 0 1 auto;
+    order: 2;
+    width: 100%;
+    grid-area: catalog;
+}
+
+.products__item {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gray);
+    padding: 30px;
+    gap: 15px;
+    border-radius: var(--border-radius);
+    height: 100%;
+}
+
+.products__item__img {
+    position: relative;
+    flex: 0 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.products__item__img img {
+    max-width: 100%;
+    max-height: 210px;
+    display: block;
+    border-radius: var(--border-radius);
+}
+
+.products__item__title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+}
+
+.products__item__rating {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    flex: 1 0 auto;
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 40px;
+    row-gap: 10px;
+}
+
+.products__item__stars {
+    color: #ffdd00;
+}
+
+.products__item__price {
+    color: #fff;
+    font-size: 26px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.products__item__btns {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: end;
+    margin-top: auto;
+}
+
+.products__item__btns .btn {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.products__item__btns .btn:hover:not(:disabled),
+.products__item__btns .btn:active:not(:disabled),
+.products__item__btns .btn:focus:not(:disabled) {
+    color: var(--primary);
+}
+
+.products__item__btns .btn svg {
+    font-size: 26px;
+}
+
+@media (min-width: 980px) {
+    .catalog__container .filter {
+        order: 2;
+    }
+
+    .catalog__container .catalog__items {
+        order: 1;
+    }
+}
+
+@media (max-width: 980px) {
+    .catalog__container {
+        display: flex !important;
+        flex-direction: row;
+    }
+
+    .filter {
+        max-width: 100%;
+    }
+}
+
+.ant-collapse-header {
+    color: #fff !important;
+    font-size: 18px;
+}
+
+.ant-slider-track {
+    background-color: var(--primary);
+}
+
+.ant-slider:hover .ant-slider-track  {
+    background-color: var(--primary);
+}
+
+.ant-slider-handle {
+    border: 2px solid var(--primary) !important;
+}
+
+.filter .ant-checkbox-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.ant-checkbox-group-item {
+    color: #fff;
+    font-size: 18px;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.ant-checkbox:hover .ant-checkbox-inner,
+.ant-checkbox-input:focus + .ant-checkbox-inner {
+    border-color: var(--primary);
+}

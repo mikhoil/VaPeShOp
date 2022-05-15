@@ -76,6 +76,10 @@
     align-items: center;
 }
 
+.nav__item svg {
+    font-size: 26px;
+}
+
 .nav__item:not(:last-child) {
     margin-right: 25px;
 }
@@ -87,4 +91,30 @@
 
 .nav__item:hover .nav__link {
     color: var(--primary);
+}
+
+.header__wrapper {
+    display: block;
+}
+
+.header__mobile {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .header__wrapper {
+        display: none;
+    }
+
+    .header__mobile {
+        display: block;
+    }
+}
+
+.ant-badge {
+    color: #fff;
+}
+
+.ant-badge-status {
+    line-height: initial;
 }
