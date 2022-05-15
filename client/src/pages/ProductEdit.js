@@ -1,14 +1,10 @@
 // @flow
 import * as React from 'react';
 
-type Props = {
-
-};
-
-export const ProductEdit = (props: Props) => {
+export const ProductEdit = () => {
     return (
         <div>
-
+            Редактирование продукта
         </div>
     );
 };

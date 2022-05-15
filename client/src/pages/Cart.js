@@ -39,7 +39,7 @@ export const Cart = observer(() => {
             else
                 setDeliveryOpen(false)
         }
-        if (key === "2") {
+        /*if (key === "2") {
             if (cart.cart.length > 0)
                 setPaymentOpen(true)
             else
@@ -50,7 +50,7 @@ export const Cart = observer(() => {
                 setCompleteOpen(true)
             else
                 setCompleteOpen(false)
-        }
+        }*/
     }, [key, cart.cart])
 
     return (
@@ -76,7 +76,7 @@ export const Cart = observer(() => {
                             </span>
                         } key="1" disabled={!deliveryOpen}>
                         </TabPane>
-                        <TabPane tab={
+                        {/*<TabPane tab={
                             <span className={classNames({"tab__complete": +key > 2})}>
                                 <MdPayment/>
                                 03. Оплата
@@ -89,7 +89,7 @@ export const Cart = observer(() => {
                                 04. Готово
                             </span>
                         } key="3" disabled={!completeOpen}>
-                        </TabPane>
+                        </TabPane>*/}
                     </Tabs>
                 </div>
                 <div className="cart-wrapper">

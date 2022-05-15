@@ -50,6 +50,8 @@ body {
   background-color: var(--gray);
   transition: all 0.3s ease-in;
   color: white;
+  text-align: start;
+  font-weight: 800;
   padding: 7px 15px;
   border-radius: var(--border-radius);
 }
@@ -64,6 +66,10 @@ body {
 
 a {
   text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
 }
 
 .cart__btn {
@@ -98,8 +104,9 @@ a {
 }
 
 .loader {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;

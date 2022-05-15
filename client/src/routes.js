@@ -2,7 +2,7 @@ import {
     ADMIN_ROUTE,
     CART_ROUTE,
     CATALOG_ROUTE, CONTACTS_ROUTE, DELIVERY_PAYMENT_ROUTE,
-    LOGIN_ROUTE, MAIN_ROUTE, PRODUCT_ROUTE,
+    LOGIN_ROUTE, MAIN_ROUTE, ORDERS_ROUTE, PRODUCT_EDIT_ROUTE, PRODUCT_ROUTE, PRODUCTS_CONTROL_ROUTE,
     REGISTRATION_ROUTE, REVIEWS_ROUTE,
     USER_PAGE_ROUTE
 } from "./utils/constRoutes";
@@ -19,11 +19,31 @@ import {Main} from "./pages/Main";
 import {Catalog} from "./pages/Catalog";
 import {CatalogCardContent} from "./pages/CatalogCardContent";
 import {NoMatch} from "./components/NoMatch/noMatch";
+import {Orders} from "./pages/Orders";
+import {Order} from "./pages/Order";
+import {ProductEdit} from "./pages/ProductEdit";
+import {ProductsEdit} from "./pages/ProductsEdit";
 
 export const adminRoutes = [
     {
         path: ADMIN_ROUTE,
         Component: <Admin/>
+    },
+    {
+        path: ORDERS_ROUTE,
+        Component: <Orders/>
+    },
+    {
+        path: ORDERS_ROUTE + "/:id",
+        Component: <Order/>
+    },
+    {
+        path: PRODUCTS_CONTROL_ROUTE,
+        Component: <ProductsEdit/>
+    },
+    {
+        path: PRODUCT_EDIT_ROUTE + "/:id",
+        Component: <ProductEdit/>
     }
 ]
 

@@ -1,0 +1,111 @@
+.ant-radio-wrapper {
+    color: #fff;
+    font-size: 18px;
+}
+
+.ant-radio-inner::after {
+    background-color: var(--primary);
+}
+
+.ant-radio-checked .ant-radio-inner, .ant-radio-checked::after {
+    border-color: var(--primary);
+}
+
+.ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner {
+    border-color: var(--primary);
+}
+
+.orders {
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+}
+
+.orders__title {
+
+}
+
+.orders__filter {
+    min-width: 250px;
+}
+
+.orders__title {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.orders__content {
+    flex: 1 0 0;
+}
+
+.orders__list {
+    display: grid;
+    grid-auto-flow: dense;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-gap: 30px;
+}
+
+.orders__item {
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    row-gap: 10px;
+    border: 2px solid var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.orders__item-block {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: var(--gray);
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+}
+
+.orders__item a {
+    color: #fff;
+}
+
+.orders__item a:not(.btn):hover {
+    color: var(--primary);
+}
+
+.orders__item-id {
+    font-size: 24px;
+}
+
+.orders__item-btns {
+    padding: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+}
+
+.orders__item-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+    width: 100%;
+    background-color: var(--gray);
+    border: 3px solid var(--primary);
+    border-radius: var(--border-radius);
+}
+
+.orders__item-btn:hover {
+    color: #fff;
+}
+
+.orders__item-btn--delete {
+    background-color: #de5454;
+    border: 3px solid #de5454;
+}
+
+.orders__item-btn--delete:hover {
+    background-color: #de2d2d;
+    border: 3px solid #de2d2d;
+}

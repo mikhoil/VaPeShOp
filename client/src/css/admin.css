@@ -1,0 +1,20 @@
+.admin-panel {
+    color: #fff;
+}
+
+.admin-panel__title {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.admin-panel__controls {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    row-gap: 20px;
+}
+
+.admin-panel__controls .btn {
+    font-size: 18px;
+}

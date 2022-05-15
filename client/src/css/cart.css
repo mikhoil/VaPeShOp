@@ -566,7 +566,7 @@
 
 .cart-order__form-btns {
     display: flex;
-    justify-content: space-between;
+    justify-content: end;
     margin-top: 20px;
     column-gap: 20px;
     row-gap: 10px;
@@ -593,18 +593,15 @@
 }
 
 .cart-order__form-btn--next {
+    border: 3px solid var(--primary);
     background-color: var(--primary);
     color: #fff;
     order: 2;
 }
 
-@media screen and (max-width: 470px) {
-    .cart-order__form-btn--prev {
-        order: 2;
-    }
-
-    .cart-order__form-btn--next {
-        order: 1;
+@media screen and (max-width: 330px) {
+    .cart-order__form-btn {
+        font-size: 20px;
     }
 }
 
@@ -618,4 +615,50 @@
     font-size: 20px;
     color: #fff;
     padding: 10px 0;
+}
+
+.cart-order__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.cart-order__form-fields {
+    display: grid;
+    grid-auto-flow: row;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+}
+
+.cart-order__form-title {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.cart-order__form-fields .PhoneInputCountry {
+    display: none;
+}
+
+.cart-order__form-field, .cart-order__form-field input {
+    width: 100%;
+}
+
+.cart-order__form-field input {
+    padding: 15px 20px;
+    border: none;
+    outline: none;
+    border-radius: var(--border-radius);
+    font-size: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    .cart-order__form-fields {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+.cart-order__form-submit {
+    display: flex;
+    justify-content: end;
 }

@@ -12,11 +12,6 @@ import {Context} from "../../index";
 export const OrderFormList = observer(() => {
     const {cart, user} = useContext(Context)
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data, "submit")
-    };
-
     if (cart.cart.length === 0) {
         return (
             <div className="order-empty">Здесь пока пусто</div>
@@ -24,7 +19,7 @@ export const OrderFormList = observer(() => {
     }
 
     return (
-        <form className="cart-order__form cart-order__form-list" onSubmit={handleSubmit(onSubmit)}>
+        <form className="cart-order__form cart-order__form-list">
             <div className="cart-order__form-items">
                 {
                     cart.cart.map((cartItem) =>

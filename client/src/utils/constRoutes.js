@@ -9,3 +9,6 @@ export const REVIEWS_ROUTE = '/reviews'
 export const CART_ROUTE = '/cart'
 export const PRODUCT_ROUTE = '/product'
 export const USER_PAGE_ROUTE = '/user'
+export const ORDERS_ROUTE = ADMIN_ROUTE + '/orders';
+export const PRODUCTS_CONTROL_ROUTE = ADMIN_ROUTE + '/products'
+export const PRODUCT_EDIT_ROUTE = PRODUCTS_CONTROL_ROUTE + '/edit';

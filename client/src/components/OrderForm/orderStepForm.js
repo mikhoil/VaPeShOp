@@ -31,12 +31,6 @@ export const OrderStepForm = observer(({updateKey, step}) => {
                 {currentStep === 1 && (
                     <OrderFormDelivery/>
                 )}
-                {currentStep === 2 && (
-                    <OrderFormPayment/>
-                )}
-                {currentStep === 3 && (
-                    <OrderFormComplete/>
-                )}
             </div>
             <div className="cart-order__form-btns">
                 {currentStep > 0 &&
@@ -48,7 +42,7 @@ export const OrderStepForm = observer(({updateKey, step}) => {
                         Назад
                     </button>
                 }
-                {currentStep < 3 &&
+                {currentStep < 1 &&
                     <button type="button" className="btn cart-order__form-btn cart-order__form-btn--next"
                             onClick={() => {
                                 setCurrentStep(currentStep + 1)
