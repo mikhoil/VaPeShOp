@@ -1,6 +1,6 @@
 import * as React from 'react';
 import "../css/pagesPagination.css"
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {Context} from "../index";
 import {Pagination} from "antd";
 import {observer} from "mobx-react-lite";
@@ -17,7 +17,7 @@ export const PagesPagination = observer(({className}) => {
                         hideOnSinglePage
                         showLessItems
                         showSizeChanger={false}
-                        onChange={(page, pageSize) => {
+                        onChange={(page) => {
                             product.setPage(page)
                         }}
             />

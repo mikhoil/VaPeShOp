@@ -5,15 +5,14 @@ import {isValidPhoneNumber} from "react-phone-number-input";
 import {createOrder} from "../../http/ordersApi";
 import {Context} from "../../index";
 import {useNavigate} from "react-router-dom";
-import {CART_ROUTE, MAIN_ROUTE} from "../../utils/constRoutes";
+import {MAIN_ROUTE} from "../../utils/constRoutes";
 
 export const OrderFormDelivery = () => {
     const {cart, user} = useContext(Context);
     const navigate = useNavigate();
-    const { register, control, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, control, handleSubmit } = useForm();
 
     const onSubmit = data => {
-        console.log(data, "submit")
         let orderData = {
             cart: cart.cart,
             phoneNumber: data.phoneNumber,

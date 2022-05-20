@@ -1,7 +1,4 @@
-import React, {useState} from "react";
-import {ProductType} from "../CatalogProductItem/productType.js";
-import {BsArrowRightCircle, BsPlusCircle, BsStar, BsStarFill, BsStarHalf} from "react-icons/bs";
-import {Button} from "antd";
+import React from "react";
 
 type Props = {
     type: string

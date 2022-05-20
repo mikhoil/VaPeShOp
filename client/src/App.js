@@ -1,9 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import './App.css';
-
 import {BrowserRouter} from "react-router-dom";
 import {observer} from "mobx-react-lite";
-
 import {HeaderNavBar} from "./components/HeaderNavBar/headerNavBar";
 import {Spin} from "antd";
 import {AppRouter} from "./components/AppRouter/appRouter";

@@ -2,10 +2,6 @@
 import * as React from 'react';
 import {PropsWithChildren} from "react";
 
-type Props = {
-    
-};
-
 interface ContainerProps {
     children: any;
 }

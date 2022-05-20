@@ -3,7 +3,7 @@ import * as React from 'react';
 import '../css/auth.css'
 import {Link, useLocation} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect} from "react";
 import {Context} from "../index";
 import {LOGIN_ROUTE, REGISTRATION_ROUTE, USER_PAGE_ROUTE} from "../utils/constRoutes";
 import {useForm} from "react-hook-form";
@@ -18,12 +18,13 @@ export const Auth = () => {
     const onSubmit = async (formData) => {
         try {
             let data;
-            console.log(formData)
+
             if(isLogin) {
                 data = await login(formData.email, formData.password);
             } else {
                 data = await registration(formData.email, formData.password);
             }
+
             user.setUser(data);
             user.setIsAuth(true);
             navigate(USER_PAGE_ROUTE)

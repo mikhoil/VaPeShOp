@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from "react";
 import 'antd/dist/antd.css';
-import './headerNavBar.css'
-import {Layout, Dropdown, Menu, Badge} from 'antd';
-import {Link, useNavigate, useLocation} from "react-router-dom";
+import '../../css/headerNavBar.css'
+import {Layout, Badge} from 'antd';
+import {Link} from "react-router-dom";
 
 import {MdOutlineLocationOn} from "react-icons/md";
 import {BiUser, BiSearch} from "react-icons/bi";
@@ -15,9 +15,6 @@ const { Header } = Layout;
 export const HeaderNavBar = observer(() => {
     const {user, cart} = useContext(Context);
     const [totalCartCount, setTotalCartCount] = useState(0)
-    const navigate = useNavigate();
-    const location = useLocation();
-    const isLogin = location.pathname === LOGIN_ROUTE;
     const cartItems = cart.cart.map((item) => {
         return item.count
     })

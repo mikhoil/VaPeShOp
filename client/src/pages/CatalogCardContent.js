@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {useLocation} from "react-router-dom";
-import {Breadcrumb, Collapse} from "antd";
+import {Collapse} from "antd";
 import {Slider} from "antd";
 import {Checkbox} from "antd";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect} from "react";
 import {CatalogProductItem} from "../components/CatalogProductItem/catalogProductItem";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
-import {fetchBrands, fetchProducts, fetchProductsBySortValue, fetchTypes} from "../http/productApi";
+import {fetchBrands, fetchProducts, fetchTypes} from "../http/productApi";
 import {PagesPagination} from "../components/pagesPagination";
 
 const {Panel} = Collapse

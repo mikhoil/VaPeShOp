@@ -22,10 +22,6 @@
     column-gap: 20px;
 }
 
-.orders__title {
-
-}
-
 .orders__filter {
     min-width: 250px;
 }
@@ -34,6 +30,7 @@
     font-size: 28px;
     color: #fff;
     margin-bottom: 20px;
+    flex: 1;
 }
 
 .orders__content {

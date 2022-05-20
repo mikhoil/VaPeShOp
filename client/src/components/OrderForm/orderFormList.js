@@ -1,11 +1,6 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {CartItemType} from "../CartItem/cartItemType";
-import {CartItem} from "../CartItem/cartItem";
-import {SubmitHandler, useForm} from "react-hook-form";
+import React, {useContext} from 'react';
 import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai";
 import {MdOutlineClose} from "react-icons/md";
-import {Button, Input} from "antd";
-import cartProductsData from "../../cartData";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
 

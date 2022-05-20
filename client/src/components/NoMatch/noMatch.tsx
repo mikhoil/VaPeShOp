@@ -1,10 +1,11 @@
 // @flow
 import * as React from 'react';
-import "./noMatch.css"
+import "../../css/noMatch.css"
 
 type Props = {
 
 };
+
 export const NoMatch = (props: Props) => {
     return (
         <section className="no-match">

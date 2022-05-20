@@ -1,7 +1,4 @@
-import React, {useContext, useEffect, useState} from 'react';
-import {CartItemType} from "./cartItemType";
-import {DeleteOutlined} from '@ant-design/icons';
-import {Context} from "../../index";
+import React from 'react';
 
 export const CartItem = ({product}) => {
     return (

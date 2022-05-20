@@ -1,21 +1,13 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import '../css/main.css'
-import { Link, Routes, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { BsArrowRightCircle } from "react-icons/bs";
-
-import {CatalogCard} from "../components/Catalog/catalogCard";
-import {ProductType} from "../components/CatalogProductItem/productType";
-import {CatalogProductItem} from "../components/CatalogProductItem/catalogProductItem";
-import {Container} from "../components/Container/container";
 import {CatalogSale} from "../components/Catalog/catalogSale";
 import {CatalogNew} from "../components/Catalog/catalogNew";
-
 import newProductImg from "../static/img/ice.png"
 import {fetchBrands, fetchProducts, fetchProductsBySortValue, fetchTypes} from "../http/productApi";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
-import {PRODUCT_ROUTE} from "../utils/constRoutes";
-import {Button} from "antd";
 
 export const Main = observer(() => {
     const {product} = useContext(Context);

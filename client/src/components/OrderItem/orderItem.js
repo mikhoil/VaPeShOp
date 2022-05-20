@@ -1,14 +1,10 @@
 // @flow
 import * as React from 'react';
-import {useState} from "react";
 import {ORDERS_ROUTE} from "../../utils/constRoutes";
 import {Link} from "react-router-dom";
 import {fetchChangeOrderStatus, fetchDeleteOrder} from "../../http/ordersApi";
 
 export const OrderItem = ({id, isComplete, phoneNumber, createdAt, updatedAt, userId, updateRender}) => {
-    const [showDeleteModal, setShowDeleteModal] = useState(false);
-    const [showStatusModal, setShowStatusModal] = useState(false);
-
     const formatDate = (time) => {
         const date = new Date(Date.parse(time));
         const options = {

@@ -1,11 +1,6 @@
-// @flow
 import * as React from 'react';
 
-type Props = {
-
-};
-
-export const DeliveryPayment = (props: Props) => {
+export const DeliveryPayment = () => {
     return (
         <div>
 

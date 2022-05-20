@@ -1,18 +1,17 @@
 import React, {useContext, useEffect, useState} from "react";
-import {CART_ROUTE, CATALOG_ROUTE, PRODUCT_ROUTE} from "../../utils/constRoutes";
+import {CATALOG_ROUTE, PRODUCT_ROUTE} from "../../utils/constRoutes";
 import {BsArrowRightCircle, BsPlusCircle, BsStar, BsStarFill, BsStarHalf} from "react-icons/bs";
 import {Button} from "antd";
-import {Link, useHistory, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
-import {addProductToCart, fetchOneProduct} from "../../http/productApi";
+import {addProductToCart} from "../../http/productApi";
 import "../../css/catalog.css"
 
 export const CatalogProductItem = observer(({product}) =>  {
     const {user, cart} = useContext(Context);
     const [reviewText, setReviewText] = useState('')
     const reviewWords = ["отзыв", "отзыва", "отзывов"]
-    const id = product.id;
 
     useEffect(() => {
         setReviewText(getReviewText(product.reviews.length, reviewWords));

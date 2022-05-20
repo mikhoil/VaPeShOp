@@ -1,12 +1,7 @@
-// @flow
 import * as React from 'react';
-import {useLocation} from "react-router-dom";
 import {useContext, useEffect, useState} from "react";
-import {CartItemType} from "../CartItem/cartItemType";
 import {OrderFormList} from "./orderFormList";
 import {OrderFormDelivery} from "./orderFormDelivery";
-import {OrderFormPayment} from "./orderFormPayment";
-import {OrderFormComplete} from "./orderFormComplete";
 import {Context} from "../../index";
 import {observer} from "mobx-react-lite";
 

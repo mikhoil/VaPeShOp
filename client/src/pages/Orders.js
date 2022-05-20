@@ -2,7 +2,7 @@ import * as React from 'react';
 import "../css/orders.css"
 import {useEffect, useState} from "react";
 import {fetchOrders} from "../http/ordersApi";
-import {Checkbox, Collapse, Pagination, Spin, Radio, Space} from "antd";
+import {Collapse, Spin, Radio, Space} from "antd";
 import {OrderItem} from "../components/OrderItem/orderItem";
 
 const {Panel} = Collapse
@@ -108,18 +108,6 @@ export const Orders = () => {
                             updateRender={updateRender}/>
                     )}
                 </div>
-                {/*{pageCount > 1 &&
-                <Pagination defaultCurrent={1}
-                            current={currentPage}
-                            total={pageCount}
-                            hideOnSinglePage
-                            pageSize={limit}
-                            showSizeChanger={false}
-                            onChange={(page, pageSize) => {
-                                setCurrentPage(page)
-                            }}
-                />
-                }*/}
             </div>
             }
         </div>

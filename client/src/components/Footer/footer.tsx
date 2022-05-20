@@ -1,5 +1,5 @@
 import React from 'react';
-import "./footer.css"
+import "../../css/footer.css"
 import {MdOutlineLocationOn} from "react-icons/md";
 import {Link} from "react-router-dom";
 import {useLocation} from "react-router-dom";

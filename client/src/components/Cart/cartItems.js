@@ -1,8 +1,6 @@
-// @flow 
 import * as React from 'react';
-import {CartItemType} from "../CartItem/cartItemType";
-import {CartItem} from "../CartItem/cartItem";
-import {useContext, useEffect, useState} from "react";
+import {CartItem} from "./cartItem";
+import {useContext} from "react";
 import {observer} from "mobx-react-lite";
 import {Context} from "../../index";
 
