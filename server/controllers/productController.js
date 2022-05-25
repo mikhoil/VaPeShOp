@@ -3,6 +3,7 @@ const path = require('path')
 const {Product, ProductInfo, Type, Brand, Review} = require('../models/models')
 const ApiError = require('../error/ApiError');
 const apiError = require("../error/apiError");
+const { Op } = require("sequelize");
 
 class ProductController {
     async create(req, res, next) {
@@ -77,6 +78,36 @@ class ProductController {
             order: productOrderSettings
         })
         return res.json(products)
+    }
+
+    async getSearchAllProductsByName(req, res, next) {
+        try {
+            let {limit, page} = req.query;
+
+            page = page || 1;
+            limit = limit || 7;
+            let offset = page * limit - limit
+
+            const products =  await Product.findAndCountAll({
+                attributes: ["name", "price", "img", "id"],
+                include: [
+                    {
+                        attributes: ["name"],
+                        model: Brand
+                    },
+                    {
+                        attributes: ["name"],
+                        model: Type
+                    },
+                ],
+                limit,
+                offset
+            })
+
+            return res.json(products);
+        } catch (e) {
+            next(apiError.badRequest(e.message));
+        }
     }
 
     async getOne(req, res, next) {

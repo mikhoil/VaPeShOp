@@ -64,8 +64,8 @@ export const updateProducts = async (id, body) => {
     return data;
 }
 
-export const getAllProductsInAdminPage = async (name, page = 1, limit = 12, filter = "All") => {
-    const {data} = await $authHost({method:'GET', url:`api/product/search?page=${page}&name=${name}&filter=${filter}`});
+export const getAllProductsInAdminPage = async (page = 1, limit = 12) => {
+    const {data} = await $authHost({method:'GET', url:`api/product/search?page=${page}&limit=${limit}`});
     return data;
 }
 

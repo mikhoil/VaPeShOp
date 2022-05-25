@@ -75,22 +75,22 @@ export const CatalogProductItem = observer(({product}) =>  {
                 <span>{product?.price || 0} Р</span>
             </div>
             <div className="products__item__btns">
-                <Link to={CATALOG_ROUTE + "/" + product.type.id + PRODUCT_ROUTE + "/" + product.id} className="btn products__item__more-info-btn">
-                    <Button className="btn products__item__more-info-btn"
+                <Link to={CATALOG_ROUTE + "/" + product.type.id + PRODUCT_ROUTE + "/" + product.id} className="btn products__item__btn">
+                    <Button className="btn products__item__btn"
                             ghost={true}
                             icon={<BsArrowRightCircle className="icon--mg-right"/>}
                     >Подробнее
                     </Button>
                 </Link>
                 { isProductInCart() ?
-                    <Button className="btn products__item__add-btn"
+                    <Button className="btn products__item__btn"
                             ghost={true}
                             icon={<BsPlusCircle className="icon--mg-right"/>}
                             onClick={() => addProductInCart(product)}
                     >В корзину
                     </Button>
                     :
-                    <Button className="btn products__item__add-btn"
+                    <Button className="btn products__item__btn"
                             ghost={true} disabled
                             icon={<BsPlusCircle className="icon--mg-right"/>}
                     >Добавлен
