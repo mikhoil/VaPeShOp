@@ -54,7 +54,14 @@ export const CatalogProductItem = observer(({product}) =>  {
     return (
         <div className="products__item">
             <div className="products__item__img">
-                <img src={product.img} alt={product.name}/>
+                <img
+                    src={
+                        product.img.startsWith('http')
+                        ? product.img
+                        : "http://localhost:3001/" + product.img
+                    }
+                    alt={product.name}
+                />
             </div>
             <div className="products__item__title">
                 <span>{product.name}</span>

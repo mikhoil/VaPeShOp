@@ -6,16 +6,21 @@ import {Button, Pagination, Input} from "antd";
 import {BsArrowRightCircle, BsPlusCircle} from "react-icons/bs";
 import {getAllProductsInAdminPage} from "../http/productApi";
 import {useState, useEffect} from "react";
+import AdminPanel from "../components/Admin/adminPanel";
 
 const { Search } = Input;
+
+function AdminPane() {
+    return null;
+}
 
 export const ProductsEdit = () => {
     const [products, setProducts] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalCount, setTotalCount] = useState(1);
+    const [imgUrl, setImgUrl] = useState('');
 
     const fetchProducts = () => {
-        console.log("SEARCH")
         getAllProductsInAdminPage(currentPage, limit).then(({count, rows}) => {
             setProducts(rows);
             setTotalCount(count)
@@ -37,6 +42,9 @@ export const ProductsEdit = () => {
     return (
         <>
             <div className="products-edit">
+                <div className="products-edit__actions">
+                    <AdminPanel/>
+                </div>
                 <h2 className="products-edit__title">Редактирование товаров</h2>
                 <div className="products-edit__search">
                     <Search
@@ -50,7 +58,14 @@ export const ProductsEdit = () => {
                     {products && products.map((product) =>
                         <div className="products__item" key={product.id}>
                             <div className="products__item__img">
-                                <img src={product.img} alt={product.name}/>
+                                <img
+                                    src={
+                                        product.img.startsWith('http')
+                                        ? product.img
+                                        : "http://localhost:3001/" + product.img
+                                    }
+                                    alt={product.name}
+                                />
                             </div>
                             <div className="products__item__title products-edit__item__title">
                                 <span>{product.name}</span>

@@ -1,20 +1,24 @@
 import * as React from 'react';
 import "../css/productEdit.css"
 import {useParams} from "react-router-dom";
-import {fetchBrands, fetchOneProduct, fetchTypes} from "../http/productApi";
+import {fetchBrands, fetchOneProduct, fetchTypes, updateProducts} from "../http/productApi";
 import {useContext, useEffect, useState} from "react";
 import {Context} from "../index";
-import {Input, Select, Upload, message} from "antd";
+import {Input, Select, Upload, message, Modal, Image, Button, InputNumber} from "antd";
 import {observer} from "mobx-react-lite";
 import {LoadingOutlined, PlusOutlined} from "@ant-design/icons";
 
 const { Option } = Select;
 
-const getBase64 = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-};
+const getBase64 = (file) =>
+    new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = () => resolve(reader.result);
+
+        reader.onerror = (error) => reject(error);
+    });
 
 const beforeUpload = (file) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png';
@@ -32,22 +36,38 @@ const beforeUpload = (file) => {
     return isJpgOrPng && isLt2M;
 };
 
+const emptyRequest = ({ file, onSuccess }) => {
+    console.log(file)
+    setTimeout(() => {
+        onSuccess("ok");
+    }, 0);
+};
+
 export const ProductEdit = observer(() => {
     const {id} = useParams();
     const {product} = useContext(Context)
     const [currentProduct, setCurrentProduct] = useState({})
     const [selectedBrand, setSelectedBrand] = useState({});
     const [selectedType, setSelectedType] = useState({});
+    const [selectedBrandId, setSelectedBrandId] = useState(null);
+    const [selectedTypeId, setSelectedTypeId] = useState(null);
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [img, setImg] = useState("");
     const [imgFile, setImgFile] = useState(null);
+    const [previewVisible, setPreviewVisible] = useState(false);
+    const [previewImage, setPreviewImage] = useState('');
+    const [previewTitle, setPreviewTitle] = useState('');
+    const [fileList, setFileList] = useState([]);
+    const [isDisableUpdateBtn, setIsDisableUpdateBtn] = useState(false);
 
     useEffect(() => {
         fetchOneProduct(id).then(data => {
             setCurrentProduct(data);
             setSelectedBrand(data.brand);
+            setSelectedBrandId(data.brand.id)
             setSelectedType(data.type);
+            setSelectedTypeId(data.type.id)
             setName(data.name);
             setPrice(data.price);
         });
@@ -56,47 +76,74 @@ export const ProductEdit = observer(() => {
     }, [id]);
 
     useEffect(() => {
-        console.log(product.types)
-    }, [product])
+        if (currentProduct && currentProduct.brand && currentProduct.type) {
+            if (currentProduct.brand.name !== selectedBrand.name ||
+                currentProduct.type.name !== selectedType.name ||
+                currentProduct.name !== name ||
+                currentProduct.price !== price ||
+                previewImage
+            ) {
+                setIsDisableUpdateBtn(false);
+            } else {
+                setIsDisableUpdateBtn(true);
+            }
+        }
+    }, [name, selectedBrand, selectedType, price, previewImage]);
 
     const onSelectTypeChange = (value) => {
-        setSelectedType(value)
+        const valueObj = JSON.parse(value)
+        setSelectedType(valueObj)
+        setSelectedTypeId(valueObj.id)
     }
 
     const onSelectBrandChange = (value) => {
-        setSelectedBrand(value)
+        const valueObj = JSON.parse(value)
+        setSelectedBrand(valueObj)
+        setSelectedBrandId(valueObj.id)
+    }
+
+    const onUpdateProductBtnClick = () => {
+        const formData = new FormData();
+
+        formData.append('name', name);
+        formData.append('price', `${price}`);
+        formData.append('img', imgFile);
+        formData.append('brandId', `${selectedBrandId}`);
+        formData.append('typeId', `${selectedTypeId}`);
+
+        updateProducts(id, formData).then(data => {
+            console.log(data)
+        })
     }
 
     const [loading, setLoading] = useState(false);
-    const [imageUrl, setImageUrl] = useState();
 
-    const handleChange = (info) => {
-        if (info.file.status === 'uploading') {
-            setLoading(true);
-            return;
+    const handleChange = async ({fileList: newFileList, file}) => {
+        if (newFileList.length === 0)
+            setFileList(newFileList)
+        else {
+            setFileList([file])
+            if (!file.url && !file.preview) {
+                file.preview = await getBase64(file.originFileObj);
+            }
+
+            setPreviewImage(file.url || file.preview);
+            setImgFile(file.originFileObj)
+            console.log(file)
+        }
+    }
+
+    const handleCancel = () => setPreviewVisible(false);
+
+    const handlePreview = async (file) => {
+        if (!file.url && !file.preview) {
+            file.preview = await getBase64(file.originFileObj);
         }
 
-        if (info.file.status === 'done') {
-            // Get this url from response in real world.
-            getBase64(info.file.originFileObj, (url) => {
-                setLoading(false);
-                setImageUrl(url);
-            });
-        }
+        setPreviewImage(file.url || file.preview);
+        setPreviewVisible(true);
+        setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
     };
-
-    const uploadButton = (
-        <div>
-            {loading ? <LoadingOutlined /> : <PlusOutlined />}
-            <div
-                style={{
-                    marginTop: 8,
-                }}
-            >
-                Upload
-            </div>
-        </div>
-    );
 
     return (
         <>
@@ -119,7 +166,7 @@ export const ProductEdit = observer(() => {
                                 onChange={onSelectTypeChange}
                             >
                                 {product.types.map((type) =>
-                                    <Option value={type.name} key={type.id}>{type.name}</Option>
+                                    <Option value={JSON.stringify(type)} key={type.id}>{type.name}</Option>
                                 )}
                             </Select>
                         </div>
@@ -135,7 +182,7 @@ export const ProductEdit = observer(() => {
                                 onChange={onSelectBrandChange}
                             >
                                 {product.brands.map((brand) =>
-                                    <Option value={brand.name} key={brand.id}>{brand.name}</Option>
+                                    <Option value={JSON.stringify(brand)} key={brand.id}>{brand.name}</Option>
                                 )}
                             </Select>
                         </div>
@@ -145,7 +192,8 @@ export const ProductEdit = observer(() => {
                         <div className="product-edit__item-block">
                             <Input
                                 size="large"
-                                value={currentProduct.name}
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                             />
                         </div>
                     </div>
@@ -154,50 +202,73 @@ export const ProductEdit = observer(() => {
                         <div className="product-edit__item-block">
                             <Input
                                 size="large"
-                                value={currentProduct.price}
+                                value={price}
+                                onChange={(e) => {
+                                    if (!isNaN(e.target.value))
+                                        setPrice(e.target.value)
+                                }}
                             />
                         </div>
                     </div>
                 </div>
                 <div className="product-edit__img">
-                    <div className="product-edit__item-title">Изображение</div>
+                    <div className="product-edit__item-title">Изменить изображение</div>
                     <div className="product-edit__item-block product-edit__item-block--img">
-                        <div className="product-edit__img-block product-edit__img-current">
-                            <div className="product-edit__img-block__title">Текущее изображение</div>
-                            <div className="product-edit__img-block__content">
-                                <img src={currentProduct.img} alt={currentProduct.name}/>
-                            </div>
+                        <div className="product-edit__item-block--img-change">
+                            <Upload
+                                maxCount="1"
+                                showUploadList={false}
+                                fileList={fileList}
+                                customRequest={emptyRequest}
+                                onChange={handleChange}
+                                onPreview={handlePreview}
+                            >
+                                <button className="btn btn-default product-edit__img-block-btn">
+                                    {loading
+                                        ? <LoadingOutlined className="icon--mg-right"/>
+                                        : <PlusOutlined className="icon--mg-right"/>}
+                                    {previewImage ? "Изменить" : "Загрузить"}
+                                </button>
+                            </Upload>
                         </div>
-                        <div className="product-edit__img-block product-edit__img-new">
-                            <div className="product-edit__img-block__title">Новое изображение</div>
-                            <div className="product-edit__img-block__content">
-                                <Upload
-                                    name="avatar"
-                                    listType="picture-card"
-                                    className="avatar-uploader"
-                                    showUploadList={false}
-                                    action="https://run.mocky.io/v3/7ea6dd0e-a7b6-4f2b-95c6-4c63fd9927f3"
-                                    beforeUpload={beforeUpload}
-                                    onChange={handleChange}
-                                >
-                                    {imageUrl ? (
-                                        <img
-                                            src={imageUrl}
-                                            alt="avatar"
-                                            style={{
-                                                width: '100%',
-                                            }}
-                                        />
-                                    ) : (
-                                        uploadButton
-                                    )}
-                                </Upload>
+                        <div className="product-edit__images">
+                            <div className="product-edit__img-block">
+                                <div className="product-edit__img-block__title">Текущее изображение</div>
+                                <div className="product-edit__img-block__content">
+                                    <Image
+                                        src={currentProduct.img}
+                                        alt={currentProduct.name}
+                                    />
+                                </div>
                             </div>
+                            {fileList.length > 0 &&
+                            <div className="product-edit__img-block">
+                                <div className="product-edit__img-block__title">Новое изображение</div>
+                                <div className="product-edit__img-block__content">
+
+
+                                    <Image
+                                        src={previewImage}
+                                        alt={previewTitle}
+                                    />
+
+                                </div>
+                            </div>
+                            }
                         </div>
                     </div>
                 </div>
                 <div className="product-edit__btns">
-
+                    <button type="button"
+                            className="btn btn-default product-edit__btn--submit"
+                            disabled={isDisableUpdateBtn}
+                            onClick={onUpdateProductBtnClick}
+                    >Применить изменения
+                    </button>
+                    <button type="button"
+                            className="btn btn-default product-edit__btn--delete"
+                    >Удалить товар
+                    </button>
                 </div>
             </div>
         </>

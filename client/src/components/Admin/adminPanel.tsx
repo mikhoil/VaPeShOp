@@ -3,9 +3,9 @@ import AddType from './addType';
 import AddBrand from './addBrand';
 import AddProduct from './addProduct';
 
-export default function Addition(): JSX.Element {
+export default function AdminPanel(): JSX.Element {
     return <>
-        <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+        <div>
             <AddType/>
             <AddBrand/>
             <AddProduct/>

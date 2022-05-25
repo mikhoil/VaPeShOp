@@ -1,6 +1,6 @@
 const uuid = require('uuid')
 const path = require('path')
-const {Product, ProductInfo, Type, Brand, Review} = require('../models/models')
+const {Product, ProductInfo, Type, Brand, Review, OrderProduct, CartProduct} = require('../models/models')
 const ApiError = require('../error/ApiError');
 const apiError = require("../error/apiError");
 const { Op } = require("sequelize");
@@ -11,7 +11,8 @@ class ProductController {
             let {name, price, rating, brandId, typeId, info} = req.body
             console.log(req.files)
             let {img} = req.files
-            let fileName = uuid.v4() + '.png'
+            const type = img.mimetype.split('/')[1];
+            let fileName = uuid.v4() + `.${type}`;
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
             const product = await Product.create({name, price, rating, brandId, typeId, img: fileName});
@@ -50,10 +51,42 @@ class ProductController {
         if (brandId) productWhereOptions = {brandId}
         if (typeId) productWhereOptions = {typeId}
         if (brandId && typeId) productWhereOptions = {brandId, typeId}
-        if (sortValue && sortType) productOrderSettings = [[sortValue, sortType]]
-
+        if (sortValue && sortType) productOrderSettings = [sortValue, sortType]
         if (!brandId && !typeId) {
+            if (productOrderSettings.length > 0)
+                products = await Product.findAndCountAll({
+                    include: [
+                        {model: Brand},
+                        {model: Type},
+                        {model: Review}
+                    ],
+                    limit,
+                    offset,
+                    order: [
+                        ['id', 'ASC'],
+                        productOrderSettings
+                    ]
+                })
+            else {
+                products = await Product.findAndCountAll({
+                    include: [
+                        {model: Brand},
+                        {model: Type},
+                        {model: Review}
+                    ],
+                    limit,
+                    offset,
+                    order: [
+                        ['id', 'ASC'],
+                    ]
+                })
+            }
+            return res.json(products)
+        }
+
+        if (productOrderSettings.length > 0)
             products = await Product.findAndCountAll({
+                where: productWhereOptions,
                 include: [
                     {model: Brand},
                     {model: Type},
@@ -61,22 +94,26 @@ class ProductController {
                 ],
                 limit,
                 offset,
-                order: productOrderSettings
+                order: [
+                    ['id', 'ASC'],
+                    productOrderSettings
+                ]
             })
-            return res.json(products)
+        else {
+            products = await Product.findAndCountAll({
+                where: productWhereOptions,
+                include: [
+                    {model: Brand},
+                    {model: Type},
+                    {model: Review}
+                ],
+                limit,
+                offset,
+                order: [
+                    ['id', 'ASC']
+                ]
+            })
         }
-
-        products = await Product.findAndCountAll({
-            where: productWhereOptions,
-            include: [
-                {model: Brand},
-                {model: Type},
-                {model: Review}
-            ],
-            limit,
-            offset,
-            order: productOrderSettings
-        })
         return res.json(products)
     }
 
@@ -101,7 +138,10 @@ class ProductController {
                     },
                 ],
                 limit,
-                offset
+                offset,
+                order: [
+                    ['id', 'ASC']
+                ]
             })
 
             return res.json(products);
@@ -125,6 +165,64 @@ class ProductController {
             return res.json(devices);
         } catch (e) {
             next(apiError.badRequest(e.message));
+        }
+    }
+
+    async delete(req, res) {
+        try {
+            const {id} = req.params;
+
+            await Product.findOne({where:{id}})
+                .then(async data => {
+                    if (data) {
+                        await Product.destroy({where:{id}}).then(() => {
+                            return res.json("Продукт удалён");
+                        })
+                    } else {
+                        return res.json("Продукт не найден в базе");
+                    }
+
+                    await OrderProduct.destroy({where:{productId: id}})
+                    await CartProduct.destroy({where:{productId: id}})
+                })
+        } catch (e) {
+            return res.json(e);
+        }
+    }
+
+    async update(req, res) {
+        try {
+            const {id} = req.params;
+            const {brandId, typeId, name, price} = req.body;
+
+            await Product.findOne({where:{id}})
+                .then( async data => {
+                    if(data) {
+                        let newValues = {};
+                        brandId ? newValues.brandId = brandId : false;
+                        typeId ? newValues.typeId = typeId : false;
+                        name ? newValues.name = name : false;
+                        price ? newValues.price = price : false;
+
+                        if (req.files) {
+                            const {img} = req.files;
+                            const type = img.mimetype.split('/')[1];
+                            let fileName = uuid.v4() + `.${type}`;
+                            img.mv(path.resolve(__dirname, '..', 'static', fileName));
+                            newValues.img = fileName;
+                        }
+
+                        await Product.update({
+                            ...newValues
+                        }, {where:{id}} ).then(() => {
+                            return res.json("Продукт обновлён");
+                        })
+                    } else {
+                        return res.json("Продукт не найден в базе");
+                    }
+                })
+        } catch (e) {
+            return res.json(e);
         }
     }
 }

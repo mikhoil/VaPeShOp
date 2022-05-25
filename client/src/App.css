@@ -54,6 +54,8 @@ body {
   font-weight: 800;
   padding: 7px 15px;
   border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
 }
 
 .btn-primary {
@@ -62,6 +64,11 @@ body {
 
 .btn-default:hover {
   background-color: var(--primary);
+}
+
+.btn-default:disabled {
+  opacity: 0.6;
+  cursor: unset;
 }
 
 a {
